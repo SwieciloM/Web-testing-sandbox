@@ -1,0 +1,55 @@
+# PARKING COST CALCULATOR - TEST PLAN
+
+## 1. Introduction
+Quick overview of what the project is about: 
+- An app that calculates parking costs based on user inputs.
+
+## 2. Goals
+- Validate correct cost calculation for different parking types.
+- Check time/date validation and error handling.
+
+## 3. Test strategy
+- Automated functional tests (Selenium + Python + unittest).
+- Manual exploratory tests for edge cases (invalid data, date/time in the past).
+
+## 4. Scope
+### 4.1 In Scope
+- Cost calculation logic
+- Date/time validation
+- Different parking types (Valet, Short-Term, Economy)
+
+### 4.2 Out of Scope
+- Performance, security, mobile layout
+
+## 5. Roles and Responsibilities
+- **Test Lead/Tester/Developer**: Me (Michał Święciło)
+
+## 6. Entry Criteria
+- The app is deployed and accessible at [URL].
+- Selenium/WebDriver, Python environment is ready.
+
+## 7. Exit Criteria
+- All planned test cases executed.
+- No open high-severity defects.
+- Final report created.
+
+## 8. Schedule
+- [Date range for each phase]
+
+## 9. Tools and Technologies
+- Python 3.9, Selenium, unittest
+- ChromeDriver
+
+## 10. Environment
+- Windows 10
+- Chrome (v.110)
+
+## 11. Deliverables
+- Test Plan
+- Test Scripts
+- Execution Report
+- Final Summary
+
+## 12. Risks
+- Limited time for thorough testing
+- Potential scope changes
