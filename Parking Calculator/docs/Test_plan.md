@@ -1,16 +1,13 @@
-# PARKING COST CALCULATOR - TEST PLAN
+<h1 align="center">PARKING CALCULATOR – TEST PLAN</h1>
 
 ## 1. Introduction
-Quick overview of what the project is about: 
-- An app that calculates parking costs based on user inputs.
+This document outlines the test plan for the [Parking Cost Calculator](https://www.shino.de/parkcalc/) web application, designed to calculate parking costs based on user input. The page also includes business requirements listed under the heading "Parking Rates", which serve as the test basis for designing test cases.
 
 ## 2. Goals
-- Validate correct cost calculation for different parking types.
-- Check time/date validation and error handling.
+The main goal is to determine the quality of the application through tests that are designed to find as many defects as possible.
 
 ## 3. Test strategy
-- Automated functional tests (Selenium + Python + unittest).
-- Manual exploratory tests for edge cases (invalid data, date/time in the past).
+- Automated functional tests on multiple browsers (Chrome, Firefox, Safari, Edge)
 
 ## 4. Scope
 ### 4.1 In Scope
