@@ -9,6 +9,7 @@ The main goal is to determine the quality of the application through tests that 
 ### 3. Test strategy
 In order to meet the project objectives, the following tests will be conducted:
 - Automated functional tests on multiple browsers (Chrome, Firefox, Safari, Edge)
+- Manual functional tests necessary to obtain information for the bug reports
 
 ### 4. Scope
 #### 4.1 In Scope
@@ -35,9 +36,9 @@ In order to meet the project objectives, the following tests will be conducted:
 - Final report created
 
 ### 8. Schedule
-| **Phase**              | **Start Date** | **End Date**   | **Owner** | **Status**      |
-|------------------------|----------------|----------------|-----------|-----------------|
-| Test Planning          | 2025-01-12     | 2025-01-13     | Me        | ✅ Completed    |
+| **Phase**              | **Start Date** | **End Date**   | **Owner** | **Status**     |
+|------------------------|----------------|----------------|-----------|----------------|
+| Test Planning          | 2025-01-12     | 2025-01-13     | Me        | ✅ Completed   |
 | Test Analysis & Design | 2025-01-13     | 2025-01-14     | Me        | 🔄 In Progress |
 | Test Implementation    | 2025-01-14     | 2025-01-16     | Me        | ❌ Not Started |
 | Test Execution         | 2025-01-17     | 2025-01-18     | Me        | ❌ Not Started |

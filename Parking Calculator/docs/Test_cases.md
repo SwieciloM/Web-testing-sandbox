@@ -2,77 +2,42 @@
 
 ### 1. Valet Parking
 
-| **Test Case ID** | **TC-VAL-01**                                                          |
-|------------------|-------------------------------------------------------------------------|
-| **Title**        | Verify Valet Parking Rate (5 hours or less)                             |
-| **Precondition** | Customer parks in Valet Parking.                                        |
-| **Steps**        | 1. Park for 5 hours or less.<br>2. Request fee upon exit.               |
-| **Expected**     | Fee = **\$12** (flat rate for 5 hours or less).                         |
-| **Actual**       | *To be filled after execution*                                          |
-| **Status**       | *Pass / Fail / Blocked*                                                |
+> **Rates**:  
+> - \$18 per day
+> - \$12 for five hours or less 
 
-| **Test Case ID** | **TC-VAL-02**                                                          |
-|------------------|-------------------------------------------------------------------------|
-| **Title**        | Verify Valet Parking Rate (more than 5 hours)                           |
-| **Precondition** | Customer parks in Valet Parking.                                        |
-| **Steps**        | 1. Park for more than 5 hours.<br>2. Request fee upon exit.             |
-| **Expected**     | Fee = **\$18** per day (flat daily rate).                               |
-| **Actual**       | *To be filled after execution*                                          |
-| **Status**       | *Pass / Fail / Blocked*                                                |
-
-| **Test Case ID** | **TC-VAL-03**                                                     |
-|------------------|--------------------------------------------------------------------|
-| **Title**        | Verify Lost Ticket Fee does NOT apply to Valet Parking            |
-| **Precondition** | Customer used Valet Parking and lost the ticket.                  |
-| **Steps**        | 1. Park in Valet.<br>2. Lose the ticket stub.<br>3. Request fee.  |
-| **Expected**     | **No extra** \$10 lost ticket fee for Valet. Fee remains \$18/day or \$12 if ≤ 5 hrs. |
-| **Actual**       | *To be filled after execution*                                     |
-| **Status**       | *Pass / Fail / Blocked*                                           |
+| **Test Case ID** | **Parking Time** | **Expected Cost** | **Actual Cost** | **Status** |
+|------------------|------------------|-------------------|-----------------|------------|
+| TC-VAL-01        | -1 min           | ERROR             |                 |            |
+| TC-VAL-02        | 0 min            | 0                 |                 |            |
+| TC-VAL-03        | 1 min            | 12$               |                 |            |
+| TC-VAL-04        | 5 hrs            | 12$               |                 |            |
+| TC-VAL-05        | 5 hrs, 1 min     | 18$               |                 |            |
+| TC-VAL-06        | 24 hrs           | 18$               |                 |            |
+| TC-VAL-07        | 24 hrs, 1 min    | 30$               |                 |            |
 
 ---
 
-### 2. Short-Term (Hourly) Parking
+### 2. Short-Term Parking
 
 > **Rates**:  
 > - \$2.00 first hour  
 > - \$1.00 each additional 1/2 hour  
 > - \$24.00 daily maximum
 
-| **Test Case ID** | **TC-SH-01**                                                                        |
-|------------------|--------------------------------------------------------------------------------------|
-| **Title**        | Verify Rate for 1 Hour in Short-Term Parking                                        |
-| **Precondition** | Customer parks in Short-Term lot.                                                   |
-| **Steps**        | 1. Park for exactly 1 hour.<br>2. Request fee.                                      |
-| **Expected**     | Fee = **\$2.00**.                                                                    |
-| **Actual**       | *To be filled after execution*                                                       |
-| **Status**       | *Pass / Fail / Blocked*                                                             |
-
-| **Test Case ID** | **TC-SH-02**                                                                        |
-|------------------|--------------------------------------------------------------------------------------|
-| **Title**        | Verify Rate for 2 Hours in Short-Term Parking                                       |
-| **Precondition** | Customer parks in Short-Term lot.                                                   |
-| **Steps**        | 1. Park for exactly 2 hours.<br>2. Request fee. <br> - 1 hour = \$2.00 <br> - Next 1 hour = 2 half-hours × \$1.00 each |
-| **Expected**     | Fee = **\$4.00** ( \$2.00 + \$1.00 + \$1.00 ).                                       |
-| **Actual**       | *To be filled after execution*                                                       |
-| **Status**       | *Pass / Fail / Blocked*                                                             |
-
-| **Test Case ID** | **TC-SH-03**                                                                       |
-|------------------|-------------------------------------------------------------------------------------|
-| **Title**        | Verify Daily Maximum in Short-Term Parking                                          |
-| **Precondition** | Customer parks in Short-Term lot.                                                   |
-| **Steps**        | 1. Park for more than 12 hours (or enough to exceed \$24).<br>2. Request fee.       |
-| **Expected**     | Fee = **\$24.00** (daily max).                                                      |
-| **Actual**       | *To be filled after execution*                                                      |
-| **Status**       | *Pass / Fail / Blocked*                                                            |
-
-| **Test Case ID** | **TC-SH-04**                                                                   |
-|------------------|---------------------------------------------------------------------------------|
-| **Title**        | Verify Lost Ticket Fee in Short-Term Parking                                    |
-| **Precondition** | Customer parks in Short-Term lot and loses the ticket.                          |
-| **Steps**        | 1. Park for any duration.<br>2. Lose the ticket.<br>3. Request fee upon exit.   |
-| **Expected**     | Fee = **Parking Rate** + **\$10** Lost Ticket Fee.<br><br>*(Not applicable to Valet.)* |
-| **Actual**       | *To be filled after execution*                                                  |
-| **Status**       | *Pass / Fail / Blocked*                                                        |
+| **Test Case ID** | **Parking Time** | **Expected Cost** | **Actual Cost** | **Status** |
+|------------------|------------------|-------------------|-----------------|------------|
+| TC-ST-01         | -1 min           | ERROR             |                 |            |
+| TC-ST-02         | 0 min            | 0                 |                 |            |
+| TC-ST-03         | 1 min            | 2$                |                 |            |
+| TC-ST-04         | 1 hr             | 2$                |                 |            |
+| TC-ST-05         | 1 hr, 1 min      | 3$                |                 |            |
+| TC-ST-06         | 1 hr, 30 min     | 3$                |                 |            |
+| TC-ST-07         | 1 hr, 31 min     | 4$                |                 |            |
+| TC-ST-08         | 12 hrs           | 24$               |                 |            |
+| TC-ST-09         | 12 hrs, 1 min    | 24$               |                 |            |
+| TC-ST-10         | 24 hrs           | 24$               |                 |            |
+| TC-ST-11         | 24 hrs, 1 min    | 26$               |                 |            |
 
 ---
 
@@ -83,126 +48,73 @@
 > - \$12.00 daily maximum  
 > - \$72.00 per week (7th day free)
 
-| **Test Case ID** | **TC-LTG-01**                                                              |
-|------------------|----------------------------------------------------------------------------|
-| **Title**        | Verify Hourly Rate in Long-Term Garage for Partial Day                     |
-| **Precondition** | Customer parks in Long-Term Garage.                                        |
-| **Steps**        | 1. Park for `X` hours (fewer than needed to hit \$12 max).<br>2. Request fee. |
-| **Expected**     | Fee = **\$2.00 × X** (does not exceed \$12 daily max).                     |
-| **Actual**       | *To be filled after execution*                                             |
-| **Status**       | *Pass / Fail / Blocked*                                                   |
-
-| **Test Case ID** | **TC-LTG-02**                                                          |
-|------------------|------------------------------------------------------------------------|
-| **Title**        | Verify Daily Maximum in Long-Term Garage                               |
-| **Precondition** | Customer parks in Long-Term Garage.                                    |
-| **Steps**        | 1. Park for enough hours to exceed \$12 if charged hourly.<br>2. Request fee. |
-| **Expected**     | Fee = **\$12** (daily max).                                            |
-| **Actual**       | *To be filled after execution*                                         |
-| **Status**       | *Pass / Fail / Blocked*                                               |
-
-| **Test Case ID** | **TC-LTG-03**                                                                     |
-|------------------|-----------------------------------------------------------------------------------|
-| **Title**        | Verify Weekly Rate in Long-Term Garage (7th day free)                             |
-| **Precondition** | Customer parks in Long-Term Garage for 7 days.                                    |
-| **Steps**        | 1. Park continuously for 7 days.<br>2. Request fee.                               |
-| **Expected**     | Fee = **\$72** total for the 7-day period.                                        |
-| **Actual**       | *To be filled after execution*                                                   |
-| **Status**       | *Pass / Fail / Blocked*                                                          |
-
-| **Test Case ID** | **TC-LTG-04**                                                                                 |
-|------------------|-----------------------------------------------------------------------------------------------|
-| **Title**        | Verify Lost Ticket Fee in Long-Term Garage                                                   |
-| **Precondition** | Customer parks in Long-Term Garage and loses the ticket.                                     |
-| **Steps**        | 1. Park any duration.<br>2. Lose the ticket.<br>3. Request fee.                               |
-| **Expected**     | Fee = **(Calculated Parking Rate)** + **\$10** lost ticket fee.                               |
-| **Actual**       | *To be filled after execution*                                                               |
-| **Status**       | *Pass / Fail / Blocked*                                                                      |
+| **Test Case ID** | **Parking Time** | **Expected Cost** | **Actual Cost** | **Status** |
+|------------------|------------------|-------------------|-----------------|------------|
+| TC-LTG-01        | -1 min           | ERROR             |                 |            |
+| TC-LTG-02        | 0 min            | 0                 |                 |            |
+| TC-LTG-03        | 1 min            | 2$                |                 |            |
+| TC-LTG-04        | 1 hr             | 2$                |                 |            |
+| TC-LTG-05        | 1 hr, 1 min      | 4$                |                 |            |
+| TC-LTG-06        | 6 hrs            | 12$               |                 |            |
+| TC-LTG-07        | 6 hrs, 1 min     | 12$               |                 |            |
+| TC-LTG-08        | 24 hrs           | 12$               |                 |            |
+| TC-LTG-09        | 24 hrs, 1 min    | 14$               |                 |            |
+| TC-LTG-10        | 144 hrs          | 72$               |                 |            |
+| TC-LTG-11        | 144 hrs, 1 min   | 72$               |                 |            |
+| TC-LTG-12        | 168 hrs          | 72$               |                 |            |
+| TC-LTG-13        | 168 hrs, 1 min   | 74$               |                 |            |
 
 ---
 
-### 4. Long-Term Surface Parking (North Lot)
+### 4. Long-Term Surface Parking
 
 > **Rates**:  
 > - \$2.00 per hour  
 > - \$10.00 daily maximum  
 > - \$60.00 per week (7th day free)
 
-| **Test Case ID** | **TC-LTS-01**                                                             |
-|------------------|---------------------------------------------------------------------------|
-| **Title**        | Verify Daily Maximum in Long-Term Surface (North Lot)                     |
-| **Precondition** | Customer parks in Long-Term Surface lot.                                  |
-| **Steps**        | 1. Park until costs would exceed \$10/day.<br>2. Request fee.             |
-| **Expected**     | Fee = **\$10** (daily max).                                               |
-| **Actual**       | *To be filled after execution*                                            |
-| **Status**       | *Pass / Fail / Blocked*                                                  |
-
-| **Test Case ID** | **TC-LTS-02**                                                                     |
-|------------------|-----------------------------------------------------------------------------------|
-| **Title**        | Verify Weekly Rate in Long-Term Surface (North Lot)                               |
-| **Precondition** | Customer parks in Long-Term Surface (North Lot) for 7 days.                       |
-| **Steps**        | 1. Park continuously for 7 days.<br>2. Request fee.                               |
-| **Expected**     | Fee = **\$60** for the 7-day period (includes the 7th day free).                  |
-| **Actual**       | *To be filled after execution*                                                   |
-| **Status**       | *Pass / Fail / Blocked*                                                          |
-
-| **Test Case ID** | **TC-LTS-03**                                                                                            |
-|------------------|----------------------------------------------------------------------------------------------------------|
-| **Title**        | Verify Lost Ticket Fee in Long-Term Surface (North Lot)                                                 |
-| **Precondition** | Customer parks in North Lot and loses the ticket.                                                       |
-| **Steps**        | 1. Park any duration.<br>2. Lose the ticket.<br>3. Request fee.                                         |
-| **Expected**     | Fee = **(Hourly or Daily/Weekly Rate)** + **\$10** lost ticket fee.                                     |
-| **Actual**       | *To be filled after execution*                                                                          |
-| **Status**       | *Pass / Fail / Blocked*                                                                                 |
+| **Test Case ID** | **Parking Time** | **Expected Cost** | **Actual Cost** | **Status** |
+|------------------|------------------|-------------------|-----------------|------------|
+| TC-LTS-01        | -1 min           | ERROR             |                 |            |
+| TC-LTS-02        | 0 min            | 0                 |                 |            |
+| TC-LTS-03        | 1 min            | 2$                |                 |            |
+| TC-LTS-04        | 1 hr             | 2$                |                 |            |
+| TC-LTS-05        | 1 hr, 1 min      | 4$                |                 |            |
+| TC-LTS-06        | 5 hrs            | 10$               |                 |            |
+| TC-LTS-07        | 5 hrs, 1 min     | 10$               |                 |            |
+| TC-LTS-08        | 24 hrs           | 10$               |                 |            |
+| TC-LTS-09        | 24 hrs, 1 min    | 12$               |                 |            |
+| TC-LTS-10        | 144 hrs          | 60$               |                 |            |
+| TC-LTS-11        | 144 hrs, 1 min   | 60$               |                 |            |
+| TC-LTS-12        | 168 hrs          | 60$               |                 |            |
+| TC-LTS-13        | 168 hrs, 1 min   | 62$               |                 |            |
 
 ---
 
-### 5. Economy Lot Parking
+### 5. Economy Parking
 
 > **Rates**:  
 > - \$2.00 per hour  
 > - \$9.00 daily maximum  
 > - \$54.00 per week (7th day free)
 
-| **Test Case ID** | **TC-ECO-01**                                                         |
-|------------------|------------------------------------------------------------------------|
-| **Title**        | Verify Daily Maximum in Economy Lot Parking                            |
-| **Precondition** | Customer parks in Economy Lot.                                         |
-| **Steps**        | 1. Park until costs would exceed \$9/day.<br>2. Request fee.           |
-| **Expected**     | Fee = **\$9** (daily max).                                             |
-| **Actual**       | *To be filled after execution*                                         |
-| **Status**       | *Pass / Fail / Blocked*                                               |
-
-| **Test Case ID** | **TC-ECO-02**                                                                   |
-|------------------|---------------------------------------------------------------------------------|
-| **Title**        | Verify Weekly Rate in Economy Lot (7th day free)                                |
-| **Precondition** | Customer parks in Economy Lot for 7 days.                                       |
-| **Steps**        | 1. Park continuously for 7 days.<br>2. Request fee.                             |
-| **Expected**     | Fee = **\$54** total for the 7-day period.                                      |
-| **Actual**       | *To be filled after execution*                                                  |
-| **Status**       | *Pass / Fail / Blocked*                                                        |
-
-| **Test Case ID** | **TC-ECO-03**                                                                                 |
-|------------------|-----------------------------------------------------------------------------------------------|
-| **Title**        | Verify Lost Ticket Fee in Economy Lot                                                        |
-| **Precondition** | Customer parks in Economy Lot and loses the ticket.                                          |
-| **Steps**        | 1. Park any duration.<br>2. Lose ticket.<br>3. Request fee.                                  |
-| **Expected**     | Fee = **(Hourly or Daily/Weekly Rate)** + **\$10** lost ticket fee.                          |
-| **Actual**       | *To be filled after execution*                                                               |
-| **Status**       | *Pass / Fail / Blocked*                                                                      |
-
----
-
-### 6. Global Lost Ticket Fee Validation
-
-| **Test Case ID** | **TC-LOST-01**                                                                                   |
-|------------------|--------------------------------------------------------------------------------------------------|
-| **Title**        | Verify Lost Ticket Fee Applies to Non-Valet Parking                                              |
-| **Precondition** | Customer parks in any lot **except** Valet and loses the ticket.                                 |
-| **Steps**        | 1. Park any duration.<br>2. Lose ticket.<br>3. Attempt to pay upon exit without the ticket stub. |
-| **Expected**     | Fee = **(Applicable Rate)** + **\$10** Lost Ticket Fee.                                          |
-| **Actual**       | *To be filled after execution*                                                                   |
-| **Status**       | *Pass / Fail / Blocked*                                                                          |
+| **Test Case ID** | **Parking Time** | **Expected Cost** | **Actual Cost** | **Status** |
+|------------------|------------------|-------------------|-----------------|------------|
+| TC-ECO-01        | -1 min           | ERROR             |                 |            |
+| TC-ECO-02        | 0 min            | 0                 |                 |            |
+| TC-ECO-03        | 1 min            | 2$                |                 |            |
+| TC-ECO-04        | 1 hr             | 2$                |                 |            |
+| TC-ECO-05        | 1 hr, 1 min      | 4$                |                 |            |
+| TC-ECO-06        | 4 hrs            | 8$                |                 |            |
+| TC-ECO-07        | 4 hrs, 1 min     | 9$                |                 |            |
+| TC-ECO-08        | 5 hrs            | 9$                |                 |            |
+| TC-ECO-09        | 5 hrs, 1 min     | 9$                |                 |            |
+| TC-ECO-10        | 24 hrs           | 9$                |                 |            |
+| TC-ECO-11        | 24 hrs, 1 min    | 11$               |                 |            |
+| TC-ECO-12        | 144 hrs          | 54$               |                 |            |
+| TC-ECO-13        | 144 hrs, 1 min   | 54$               |                 |            |
+| TC-ECO-14        | 168 hrs          | 54$               |                 |            |
+| TC-ECO-15        | 168 hrs, 1 min   | 56$               |                 |            |
 
 ---
 
@@ -216,19 +128,18 @@
    - After hitting the weekly max, the 7th day is free.
 
 3. **Lost Ticket Handling**  
-   - Applies a \$10 fee to non-Valet parking.  
-   - For Valet Parking, the lost ticket fee **does not apply**.
+   - Since lost ticket functionality is not implemented, it will not be covered by tests 
+   - All test scenarios assume that the user has a valid ticket when accounting for parking fees
 
 4. **Rounding**  
    - No partial increments beyond the stated half-hour or hourly rates.
 
 5. **Test Data**  
    - Use various hours (e.g., 1h, 1.5h, 2h, 24h, 168h for 7 days) to confirm daily/weekly maximum rates.  
-   - Test lost ticket scenarios for each parking option (except Valet).
 
 ---
 
-## Summary
+### Summary
 
 The above test cases verify:
 - **Valet Parking**: \$12 if parked ≤ 5 hours, \$18 if > 5 hours, and no lost ticket fee.  
@@ -237,4 +148,3 @@ The above test cases verify:
 - **Long-Term Surface (North Lot)**: \$2/hour, \$10 daily max, \$60 weekly (7th day free).  
 - **Economy Lot**: \$2/hour, \$9 daily max, \$54 weekly (7th day free).  
 - **Lost Ticket**: \$10 fee applies to all non-Valet lots.
-
