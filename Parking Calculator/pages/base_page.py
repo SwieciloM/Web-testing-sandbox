@@ -27,5 +27,9 @@ class BasePage:
     def _click(self, locator: tuple):
         self._find(locator).click()
 
+    def _select_from_dropdown(self, dropdown_locator: tuple, option_locator: tuple):
+        self._find(dropdown_locator).click()
+        self._find(option_locator).click()
+
     def _get_text(self, locator: tuple) -> str:
         return self._find(locator).text

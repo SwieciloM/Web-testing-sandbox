@@ -10,10 +10,12 @@ class TestValetParking:
     def test_valid_data_entry(self, driver):
         login_page = CostCalculatorPage(driver)
         login_page.open()
+        login_page.calculate_cost("", "", "", "", "")
 
-    @pytest.mark.valet
-    @pytest.mark.invalid_data
-    def test_invalid_data_entry(self, driver):
-        login_page = CostCalculatorPage(driver)
-        login_page.open()
+
+    # @pytest.mark.valet
+    # @pytest.mark.invalid_data
+    # def test_invalid_data_entry(self, driver):
+    #     login_page = CostCalculatorPage(driver)
+    #     login_page.open()
 

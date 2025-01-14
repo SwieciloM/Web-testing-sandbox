@@ -3,7 +3,7 @@ import pytest
 
 
 # @pytest.fixture(params=["firefox", "edge"])
-@pytest.fixture(params=["edge"])
+@pytest.fixture(params=["firefox"])
 def driver(request):
     # browser = request.config.getoption("--browser")
     browser = request.param
