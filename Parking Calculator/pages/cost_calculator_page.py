@@ -14,7 +14,7 @@ class CostCalculatorPage(BasePage):
     def open(self):
         super()._open_url(self.__url)
 
-    def calculate_cost(self, parking_type: str, entry_date: str, entry_time: str, leaving_date: str, leaving_time: str):
+    def calculate_cost(self, parking_type: str, entry_date: str, entry_time: str, leaving_date: str, leaving_time: str, use_widget: bool = False):
         pass
 
     def get_cost(self) -> float:
