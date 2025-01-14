@@ -122,29 +122,17 @@
 
 1. **Partial Hour Billing**  
    - Short-Term parking uses increments of the first hour at \$2.00, then \$1.00 per each additional 30 minutes.
+   - No partial increments beyond the stated half-hour or hourly rates.
 
 2. **Daily and Weekly Max**  
    - After hitting the daily max, the system charges no more within that 24-hour window.  
    - After hitting the weekly max, the 7th day is free.
 
 3. **Lost Ticket Handling**  
-   - Since lost ticket functionality is not implemented, it will not be covered by tests 
-   - All test scenarios assume that the user has a valid ticket when accounting for parking fees
+   - Since lost ticket functionality is not implemented, it will not be covered by tests. 
+   - All test scenarios assume that the user has a valid ticket when accounting for parking fees.
 
-4. **Rounding**  
-   - No partial increments beyond the stated half-hour or hourly rates.
-
-5. **Test Data**  
-   - Use various hours (e.g., 1h, 1.5h, 2h, 24h, 168h for 7 days) to confirm daily/weekly maximum rates.  
+4. **Test Data**    
+   - As the parking time can theoretically be infinite the test cases are limited to the most critical scenarios.
 
 ---
-
-### Summary
-
-The above test cases verify:
-- **Valet Parking**: \$12 if parked ≤ 5 hours, \$18 if > 5 hours, and no lost ticket fee.  
-- **Short-Term Parking**: \$2 for the first hour, \$1 per additional 30 min, up to \$24 daily.  
-- **Long-Term Garage**: \$2/hour, \$12 daily max, \$72 weekly (7th day free).  
-- **Long-Term Surface (North Lot)**: \$2/hour, \$10 daily max, \$60 weekly (7th day free).  
-- **Economy Lot**: \$2/hour, \$9 daily max, \$54 weekly (7th day free).  
-- **Lost Ticket**: \$10 fee applies to all non-Valet lots.
