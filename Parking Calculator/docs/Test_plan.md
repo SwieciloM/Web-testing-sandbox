@@ -39,8 +39,8 @@ In order to meet the project objectives, the following tests will be conducted:
 | **Phase**              | **Start Date** | **End Date**   | **Owner** | **Status**     |
 |------------------------|----------------|----------------|-----------|----------------|
 | Test Planning          | 2025-01-12     | 2025-01-13     | Me        | ✅ Completed   |
-| Test Analysis & Design | 2025-01-13     | 2025-01-14     | Me        | 🔄 In Progress |
-| Test Implementation    | 2025-01-14     | 2025-01-16     | Me        | ❌ Not Started |
+| Test Analysis & Design | 2025-01-13     | 2025-01-14     | Me        | ✅ Completed   |
+| Test Implementation    | 2025-01-14     | 2025-01-16     | Me        | 🔄 In Progress |
 | Test Execution         | 2025-01-17     | 2025-01-18     | Me        | ❌ Not Started |
 | Finalization           | 2025-01-18     | 2025-01-19     | Me        | ❌ Not Started |
 
