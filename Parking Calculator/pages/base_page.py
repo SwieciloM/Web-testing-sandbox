@@ -33,8 +33,11 @@ class BasePage:
         self._find(dropdown_locator).click()
         self._find(option_locator).click()
 
-    def _enter_date_via_widget(self):
-        pass
+    def _enter_date_via_widget(self, locator: tuple, date: str):
+        self._click(locator)
+        # Switch to new window
+        # Enter the date
+        # Return to the old window
 
     def _get_text(self, locator: tuple) -> str:
         return self._find(locator).text

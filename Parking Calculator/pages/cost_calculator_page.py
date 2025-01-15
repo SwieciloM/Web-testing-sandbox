@@ -19,8 +19,8 @@ class CostCalculatorPage(BasePage):
     __long_surface_option_locator = (By.CSS_SELECTOR, "#ParkingLot option[value='Long-Surface']")
     __starting_date_field_locator = (By.ID, "StartingDate")
     __leaving_date_field_locator = (By.ID, "LeavingDate")
-    __starting_date_widget_locator = (By.XPATH, r"//a[@href=\"javascript:NewCal('StartingDate','mmddyyyy',false,24)\"]")
-    __leaving_date_widget_locator = (By.XPATH, r"//a[@href=\"javascript:NewCal('LeavingDate','mmddyyyy',false,24)\"]")
+    __starting_date_widget_locator = (By.CSS_SELECTOR, "a[href*='StartingDate']")
+    __leaving_date_widget_locator = (By.CSS_SELECTOR, "a[href*='LeavingDate']")
     __starting_time_field_locator = (By.ID, "StartingTime")
     __leaving_time_field_locator = (By.ID, "LeavingTime")
     __submit_button_locator = (By.CSS_SELECTOR, "input[name='Submit']")
@@ -34,7 +34,8 @@ class CostCalculatorPage(BasePage):
     def open(self):
         super()._open_url(self.__url)
 
-    def calculate(self, parking_type: ParkingType, entry_date: str, entry_time: str, leaving_date: str, leaving_time: str, use_widget: bool = False):
+    def calculate(self, parking_type: ParkingType, entry_date: str, entry_time: str, leaving_date: str,
+                  leaving_time: str, use_widget: bool = False):
         if parking_type == ParkingType.VALET:
             super()._select_from_dropdown(self.__parking_type_dropdown_locator, self.__valet_option_locator)
         elif parking_type == ParkingType.SHORT_TERM:
@@ -47,8 +48,8 @@ class CostCalculatorPage(BasePage):
             super()._select_from_dropdown(self.__parking_type_dropdown_locator, self.__economy_option_locator)
 
         if use_widget:
-            super()._enter_date_via_widget()
-            super()._enter_date_via_widget()
+            super()._enter_date_via_widget(self.__starting_date_widget_locator, entry_date)
+            super()._enter_date_via_widget(self.__leaving_date_widget_locator, leaving_date)
         else:
             super()._type(self.__starting_date_field_locator, entry_date)
             super()._type(self.__leaving_date_field_locator, leaving_date)
