@@ -34,7 +34,11 @@ class BasePage:
         self._find(option_locator).click()
 
     def _enter_date_via_widget(self, locator: tuple, date: str):
+        # Check we don't have other windows open already
+        assert len(self._driver.window_handles) == 1, "Too many windows/tabs opened"
         self._click(locator)
+        # Store the ID of the original window
+        original_window = self._driver.current_window_handle
         # Switch to new window
         # Enter the date
         # Return to the old window

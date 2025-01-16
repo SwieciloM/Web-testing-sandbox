@@ -16,6 +16,7 @@ def driver(request):
     else:
         raise TypeError(f"Expected 'firefox' or 'edge' but got {browser}")
 
+    my_driver.maximize_window()
     my_driver.implicitly_wait(1)
 
     yield my_driver
