@@ -1,14 +1,17 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
 from selenium.common import NoSuchElementException
 from typing import Optional
 
 from enums.parking_type import ParkingType
+from pages.date_picker_page import DatePickerPage
 from pages.base_page import BasePage
 
 
 class CostCalculatorPage(BasePage):
-    """Cost calculator page - The main and only page of the app."""
+    """Cost calculator page - the main page of the app."""
 
     __url = "https://www.shino.de/parkcalc/"
     __parking_type_dropdown_locator = (By.ID, "ParkingLot")
@@ -19,8 +22,8 @@ class CostCalculatorPage(BasePage):
     __long_surface_option_locator = (By.CSS_SELECTOR, "#ParkingLot option[value='Long-Surface']")
     __starting_date_field_locator = (By.ID, "StartingDate")
     __leaving_date_field_locator = (By.ID, "LeavingDate")
-    __starting_date_widget_locator = (By.CSS_SELECTOR, "a[href*='StartingDate']")
-    __leaving_date_widget_locator = (By.CSS_SELECTOR, "a[href*='LeavingDate']")
+    __starting_date_picker_locator = (By.CSS_SELECTOR, "a[href*='StartingDate']")
+    __leaving_date_picker_locator = (By.CSS_SELECTOR, "a[href*='LeavingDate']")
     __starting_time_field_locator = (By.ID, "StartingTime")
     __leaving_time_field_locator = (By.ID, "LeavingTime")
     __submit_button_locator = (By.CSS_SELECTOR, "input[name='Submit']")
@@ -34,22 +37,43 @@ class CostCalculatorPage(BasePage):
     def open(self):
         super()._open_url(self.__url)
 
-    def calculate(self, parking_type: ParkingType, entry_date: str, entry_time: str, leaving_date: str,
-                  leaving_time: str, use_widget: bool = False):
-        if parking_type == ParkingType.VALET:
-            super()._select_from_dropdown(self.__parking_type_dropdown_locator, self.__valet_option_locator)
-        elif parking_type == ParkingType.SHORT_TERM:
-            super()._select_from_dropdown(self.__parking_type_dropdown_locator, self.__short_option_locator)
-        elif parking_type == ParkingType.LONG_TERM_GARAGE:
-            super()._select_from_dropdown(self.__parking_type_dropdown_locator, self.__long_garage_option_locator)
-        elif parking_type == ParkingType.LONG_TERM_SURFACE:
-            super()._select_from_dropdown(self.__parking_type_dropdown_locator, self.__long_surface_option_locator)
-        elif parking_type == ParkingType.ECONOMY:
-            super()._select_from_dropdown(self.__parking_type_dropdown_locator, self.__economy_option_locator)
+    def _get_date_picker(self, locator: tuple) -> DatePickerPage:
+        """Opens the date picker widget and switches to the new window."""
+        super()._click(locator)
 
-        if use_widget:
-            super()._enter_date_via_widget(self.__starting_date_widget_locator, entry_date)
-            super()._enter_date_via_widget(self.__leaving_date_widget_locator, leaving_date)
+        # Wait for the new window and switch to it
+        WebDriverWait(self._driver, 3).until(ec.new_window_is_opened)
+        self._driver.switch_to.window(self._driver.window_handles[-1])
+
+        return DatePickerPage(self._driver)
+
+    def _enter_date_via_picker(self, locator: tuple, text_date: str):
+        date_picker = self._get_date_picker(locator)
+        date_picker.select_date(text_date)
+
+        # Wait until the window count returns to 1 (original window only)
+        WebDriverWait(self._driver, 3).until(lambda driver: len(driver.window_handles) == 1)
+        # Switch back to the original window
+        self._driver.switch_to.window(self._driver.window_handles[0])
+
+    def calculate(self, parking_type: ParkingType, entry_date: str, entry_time: str, leaving_date: str,
+                  leaving_time: str, use_picker: bool = False):
+        parking_type_locator = {
+            ParkingType.VALET: self.__valet_option_locator,
+            ParkingType.SHORT_TERM: self.__short_option_locator,
+            ParkingType.LONG_TERM_GARAGE: self.__long_garage_option_locator,
+            ParkingType.LONG_TERM_SURFACE: self.__long_surface_option_locator,
+            ParkingType.ECONOMY: self.__economy_option_locator,
+        }
+
+        if parking_type in parking_type_locator:
+            super()._select_from_dropdown(self.__parking_type_dropdown_locator, parking_type_locator[parking_type])
+        else:
+            raise ValueError(f"Invalid parking type: {parking_type}")
+
+        if use_picker:
+            self._enter_date_via_picker(self.__starting_date_picker_locator, entry_date)
+            self._enter_date_via_picker(self.__leaving_date_picker_locator, leaving_date)
         else:
             super()._type(self.__starting_date_field_locator, entry_date)
             super()._type(self.__leaving_date_field_locator, leaving_date)
