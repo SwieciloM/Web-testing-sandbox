@@ -57,7 +57,6 @@
 | TC-ST-11-NDP     | 24 hrs, 1 min    | FALSE                | 26$               |                 |            |
 | TC-ST-11-DP      | 24 hrs, 1 min    | TRUE                 | 26$               |                 |            |
 
-
 ---
 
 ### 3. Long-Term Garage Parking
