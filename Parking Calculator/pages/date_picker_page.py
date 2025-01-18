@@ -29,6 +29,11 @@ class DatePickerPage(BasePage):
         super().__init__(driver)
 
     def _select_year(self, year: int):
+        """
+        Selects a specific year in the date picker.
+
+        :param year: The year to select.
+        """
         current_year = int(super()._get_text(self.__year_text_locator).strip())
         year_difference = year - current_year
 
@@ -40,6 +45,12 @@ class DatePickerPage(BasePage):
                 super()._click(self.__year_decrement_button_locator)
 
     def _select_month(self, month: int):
+        """
+        Selects a specific month in the date picker.
+
+        :param month: The month to select (1 for January, 2 for February, ..., 12 for December).
+        :raises ValueError: If the month is not between 1 and 12.
+        """
         super()._click(self.__month_dropdown_locator)
 
         month_locator = {
@@ -63,6 +74,12 @@ class DatePickerPage(BasePage):
             raise ValueError(f"Invalid month: {month}. Please provide a value between 1 and 12.")
 
     def _select_day(self, day: int):
+        """
+        Selects a specific day in the date picker.
+
+        :param day: The day to select (e.g., 1 for the first day of the month).
+        :raises ValueError: If the day is not valid for the current month.
+        """
         day_elements = super()._find_all(self.__day_buttons_locator)
         days_num = len(day_elements)
 
@@ -70,14 +87,26 @@ class DatePickerPage(BasePage):
             for day_element in day_elements:
                 if int(super()._get_text(day_element).strip()) == day:
                     super()._click(day_element)
-        else:
-            raise ValueError(f"Invalid day: {day}. Please provide a value between 1 and {days_num}.")
+                    return
+        raise ValueError(f"Invalid day: {day}. Please provide a value between 1 and {days_num}.")
 
     def _is_valid_date(self, text_date: str) -> bool:
+        """
+        Validates whether a date string is in MM/DD/YYYY format.
+
+        :param text_date: The date string to validate.
+        :return: True if the date is valid, False otherwise.
+        """
         date_pattern = r"^(0?[1-9]|1[0-2])/(0?[1-9]|[12][0-9]|3[01])/\d{4}$"  # Regex pattern for MM/DD/YYYY format
         return bool(re.match(date_pattern, text_date))
 
     def select_date(self, text_date: str):
+        """
+        Selects a date in the date picker by specifying the year, month, and day.
+
+        :param text_date: The date to select in MM/DD/YYYY format.
+        :raises ValueError: If the date string is not valid.
+        """
         if self._is_valid_date(text_date):
             month, day, year = map(int, text_date.split("/"))
             self._select_year(year)
