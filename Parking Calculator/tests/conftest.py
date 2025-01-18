@@ -1,12 +1,12 @@
-from selenium import webdriver
 import pytest
+from selenium import webdriver
 
 
 # @pytest.fixture(params=["firefox", "edge"])
-@pytest.fixture(params=["firefox"])
+@pytest.fixture
 def driver(request):
-    # browser = request.config.getoption("--browser")
-    browser = request.param
+    browser = request.config.getoption("--browser")
+    # browser = request.param
     print(f"Creating {browser} driver")
 
     if browser == "firefox":
@@ -22,7 +22,7 @@ def driver(request):
     yield my_driver
 
     print(f"\nClosing {browser} driver")
-    # my_driver.quit()
+    my_driver.quit()
 
 
 def pytest_addoption(parser):

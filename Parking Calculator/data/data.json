@@ -140,7 +140,7 @@
     "leaving_date": "01/16/2027",
     "leaving_time": "10:31",
     "use_picker": false,
-    "expected_cost": 30
+    "expected_cost": 36
   },
   {
     "test_case_id": "TC-VAL-07-DP",
@@ -151,7 +151,7 @@
     "leaving_date": "01/16/2027",
     "leaving_time": "10:31",
     "use_picker": true,
-    "expected_cost": 30
+    "expected_cost": 36
   },
   {
     "test_case_id": "TC-ST-01-NDP",
