@@ -11,7 +11,7 @@ class TestValetParking:
     def test_valid_data_entry(self, driver):
         page = CostCalculatorPage(driver)
         page.open()
-        page.calculate(ParkingType.ECONOMY, "1/10/2025", "7:00", "1/15/2025", "11:00", True)
+        page.calculate(ParkingType.ECONOMY, "11/20/2036", "2:00", "12/2/2036", "11:00", True)
         cost = page.parking_cost
         print(f"Calculated cost = {cost}")
         time = page.parking_time

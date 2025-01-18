@@ -1,6 +1,7 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
+import re
 
 
 class DatePickerPage(BasePage):
@@ -22,7 +23,7 @@ class DatePickerPage(BasePage):
     __year_increment_button_locator = (By.CSS_SELECTOR, "a[href*='IncYear']")
     __year_decrement_button_locator = (By.CSS_SELECTOR, "a[href*='DecYear']")
     __year_text_locator = (By.CSS_SELECTOR, "td[align='right'] font b")
-    __day_buttons_locator = (By.CSS_SELECTOR, "a[href*='window.close']")
+    __day_buttons_locator = (By.CSS_SELECTOR, "a:not([href*='//'])[href*='window.close']")
 
     def __init__(self, driver: WebDriver):
         super().__init__(driver)
@@ -72,8 +73,16 @@ class DatePickerPage(BasePage):
         else:
             raise ValueError(f"Invalid day: {day}. Please provide a value between 1 and {days_num}.")
 
+    def _is_valid_date(self, text_date: str) -> bool:
+        date_pattern = r"^(0?[1-9]|1[0-2])/(0?[1-9]|[12][0-9]|3[01])/\d{4}$"  # Regex pattern for MM/DD/YYYY format
+        return bool(re.match(date_pattern, text_date))
+
     def select_date(self, text_date: str):
-        self._select_year(2030)
-        self._select_month(10)
-        self._select_day(30)
+        if self._is_valid_date(text_date):
+            month, day, year = map(int, text_date.split("/"))
+            self._select_year(year)
+            self._select_month(month)
+            self._select_day(day)
+        else:
+            raise ValueError(f"Invalid date: {text_date}. Please provide a string in MM/DD/YYYY format.")
 

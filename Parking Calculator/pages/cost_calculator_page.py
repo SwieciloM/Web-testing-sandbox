@@ -39,22 +39,42 @@ class CostCalculatorPage(BasePage):
 
     def _get_date_picker(self, locator: tuple) -> DatePickerPage:
         """Opens the date picker widget and switches to the new window."""
+        # Get the current number of windows
+        self._initial_window_count = len(self._driver.window_handles)
+
         super()._click(locator)
 
         # Wait for the new window and switch to it
-        WebDriverWait(self._driver, 3).until(ec.new_window_is_opened)
+        # Wait for the new window to open
+        WebDriverWait(self._driver, 3).until(
+            lambda driver: len(driver.window_handles) == self._initial_window_count + 1
+        )
+
+        # Switch to the new window (the last handle in the list)
         self._driver.switch_to.window(self._driver.window_handles[-1])
 
         return DatePickerPage(self._driver)
 
     def _enter_date_via_picker(self, locator: tuple, text_date: str):
+        original_windows = self._driver.window_handles
         date_picker = self._get_date_picker(locator)
-        date_picker.select_date(text_date)
-
+        try:
+            date_picker.select_date(text_date)
+        except:
+            self._driver.switch_to.window(self._driver.window_handles[0])
+            print("To zdzadziała")
+        print("tutaj??????????")
         # Wait until the window count returns to 1 (original window only)
-        WebDriverWait(self._driver, 3).until(lambda driver: len(driver.window_handles) == 1)
-        # Switch back to the original window
-        self._driver.switch_to.window(self._driver.window_handles[0])
+        # Wait for the number of windows to decrease
+        # WebDriverWait(self._driver, 3).until(
+        #     lambda driver: len(driver.window_handles) < len(original_windows)
+        # )
+        print("To jednak tutaj")
+        # Switch to a remaining window
+        # if len(self._driver.window_handles) > 0:
+        #     self._driver.switch_to.window(self._driver.window_handles[0])
+        # else:
+        #     raise RuntimeError("All browser windows were closed unexpectedly.")
 
     def calculate(self, parking_type: ParkingType, entry_date: str, entry_time: str, leaving_date: str,
                   leaving_time: str, use_picker: bool = False):
