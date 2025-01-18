@@ -11,10 +11,14 @@ def driver(request):
 
     if browser == "firefox":
         my_driver = webdriver.Firefox()
+    elif browser == "chrome":
+        my_driver = webdriver.Chrome()
+    elif browser == "safari":
+        my_driver = webdriver.Safari()
     elif browser == "edge":
         my_driver = webdriver.Edge()
     else:
-        raise TypeError(f"Expected 'firefox' or 'edge' but got {browser}")
+        raise TypeError(f"Expected 'firefox', 'chrome', 'safari' or 'edge' but got {browser}")
 
     my_driver.maximize_window()
     my_driver.implicitly_wait(1)
