@@ -1,6 +1,6 @@
-<h1 align="center">Web-Testing-Sandbox</h1>
+<h1 align="center">Web Testing Sandbox</h1>
 
-**Web-Testing-Sandbox** is a collection of several mini-projects focusing on web applications testing. Each project is dedicated for a different web app and uses popular test automation tools such as Selenium, PyTest or Requests.
+**Web Testing Sandbox** is a collection of several mini-projects focusing on web applications testing. Each project is dedicated for a different web app and uses popular test automation tools such as Selenium, PyTest or Requests.
 
 ## Tested sites
 
