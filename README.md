@@ -4,7 +4,7 @@
 
 ## Tested sites
 
-### 1. [Parking Calculator](Parking-Calculator/)
+### 1. [Parking Calculator](Parking%20Calculator/)
 
 **Description**: Automated testing for an simple cost calculator app. Covered functionalities include:
 - Cost calculation logic (different parking types, date/time inputs)
