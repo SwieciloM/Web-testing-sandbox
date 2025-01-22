@@ -47,8 +47,8 @@ To replicate the testing process, follow these steps:
 - **Test Object**: [Parking Cost Calculator](https://www.shino.de/parkcalc/)
 
 ## Deliverables
-- Test Plan
-- Test Cases
-- Automation Scripts
-- Execution Reports
-- Bug Reports
+- [Test Plan](docs/Test_plan.md)
+- [Test Cases](docs/Test_cases.md)
+- [Automation Scripts](tests)
+- [Execution Reports](reports)
+- [Specific Bug Reports](reports/individual%20bug%20reports)
