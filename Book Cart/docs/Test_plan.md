@@ -13,21 +13,23 @@ In order to meet the project objectives, the following tests will be conducted:
 
 ### 4. Scope
 #### 4.1 In Scope
-- Cost calculation logic including:
-  - Different parking types (Valet, Short-Term, Economy)
-  - Different date/time (with edge cases)
-- Input validation
-- Widgets interactivity (buttons, dropdowns, checkboxes, date picker)
+- Most common workflows including:
+  - User authentication & authorization (registration, login, logout)
+  - Product browsing & search
+  - Shopping cart & checkout
+- Basic API requests
+- Widgets interactivity (buttons, dropdowns, checkboxes)
 - System behaviour on different browsers
 
 #### 4.2 Out of Scope
 - Non-functional features (e.g. performance)
+- Advanced security
 
 ### 5. Roles and Responsibilities
 - **Test Lead/Tester**: Me (Michał Święciło)
 
 ### 6. Entry Criteria
-- The app is deployed and accessible at [https://www.shino.de/parkcalc/](https://www.shino.de/parkcalc/)
+- The app is deployed and accessible at [BookCart](https://bookcart.azurewebsites.net/)
 - Python environment with Selenium is ready
 
 ### 7. Exit Criteria
@@ -38,14 +40,14 @@ In order to meet the project objectives, the following tests will be conducted:
 ### 8. Schedule
 | **Phase**              | **Start Date** | **End Date**   | **Owner** | **Status**     |
 |------------------------|----------------|----------------|-----------|----------------|
-| Test Planning          | 2025-01-12     | 2025-01-13     | Me        | ✅ Completed   |
-| Test Analysis & Design | 2025-01-13     | 2025-01-14     | Me        | ✅ Completed   |
-| Test Implementation    | 2025-01-14     | 2025-01-16     | Me        | ✅ Completed   |
-| Test Execution         | 2025-01-17     | 2025-01-18     | Me        | 🔄 In Progress |
-| Finalization           | 2025-01-18     | 2025-01-19     | Me        | ❌ Not Started |
+| Test Planning          | 2025-01-27     | 2025-01-31     | Me        | ✅ Completed   |
+| Test Analysis & Design | 2025-02-01     | 2025-02-08     | Me        | 🔄 In Progress |
+| Test Implementation    | 2025-02-03     | 2025-02-10     | Me        | 🔄 In Progress |
+| Test Execution         | 2025-02-05     | 2025-02-12     | Me        | ❌ Not Started |
+| Finalization           | 2025-02-07     | 2025-02-16     | Me        | ❌ Not Started |
 
 ### 9. Tools and Technologies
-- Python 3.9 with selenium, pytest and pytest-html libraries
+- Python 3.9 with selenium, pytest, pytest-html, pytest-xdis and requests libraries
 - ChromeDriver, FirefoxDriver, EdgeDriver, SafariDriver
 
 ### 10. Environment
