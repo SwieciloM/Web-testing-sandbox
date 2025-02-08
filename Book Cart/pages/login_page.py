@@ -13,23 +13,15 @@ class LoginPage(BasePage):
     __login_button_locator = (By.XPATH, "//button[.//span[text()='Login']]")
 
     def __init__(self, driver: WebDriver):
+        """Initialize the login page with a WebDriver instance."""
         super().__init__(driver)
 
     def open(self):
-        """
-        Opens the login page in the browser.
-        """
-
+        """Open the login page in the browser."""
         super()._open_url(self.__url)
 
     def log_in(self, username: str, password: str):
-        """
-        Fills the login form and submits it.
-
-        :param username: Username for authentication.
-        :param password: Password associated with the user account.
-        """
+        """Fill in login credentials and submit the form."""
         super()._type(self.__username_field_locator, username)
         super()._type(self.__password_field_locator, password)
         super()._click(self.__login_button_locator)
-
