@@ -21,7 +21,7 @@ class BasePage:
             return False
 
     def _find(self, locator: tuple) -> WebElement:
-        return self._find(*locator)
+        return self._driver.find_element(*locator)
 
     def _find_all(self, locator: tuple) -> list[WebElement]:
         return self._driver.find_elements(*locator)

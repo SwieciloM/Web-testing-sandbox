@@ -14,8 +14,8 @@ class RegisterPage(BasePage):
     __username_field_locator = (By.ID, "mat-input-2")
     __password_field_locator = (By.ID, "mat-input-3")
     __password_confirm_field_locator = (By.ID, "mat-input-4")
-    __gender_male_checkbox_locator = (By.ID, "mat-radio-0-input")
-    __gender_female_checkbox_locator = (By.ID, "mat-radio-1-input")
+    __gender_male_checkbox_locator = (By.ID, "mat-radio-0")
+    __gender_female_checkbox_locator = (By.ID, "mat-radio-1")
     __register_button_locator = (By.XPATH, "//button[.//span[text()='Register']]")
 
     def __init__(self, driver: WebDriver):
