@@ -18,7 +18,7 @@ class TestAccountFunctionality:
     def test_register(self, driver: WebDriver):
         register_page = RegisterPage(driver)
         register_page.open()
-        register_page.register("Daniel", "Sokolik", Gender.MALE, "DanielS", "DanielS1$")
+        register_page.register("Daniel", "Sokolik", Gender.FEMALE, "DanielS", "DanielS1$")
 
 
 
