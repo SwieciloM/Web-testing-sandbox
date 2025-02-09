@@ -10,15 +10,15 @@ class TestAccountFunctionality:
     Test class containing test methods for log-in and registration scenarios.
     """
 
-    # def test_login(self, driver: WebDriver):
-    #     login_page = LoginPage(driver)
-    #     login_page.open()
-    #     login_page.log_in("MichalS", "StrongPassword123")
+    def test_login(self, driver: WebDriver):
+        login_page = LoginPage(driver)
+        login_page.open()
+        login_page.log_in("MichalS", "StrongPassword123")
 
-    def test_register(self, driver: WebDriver):
-        register_page = RegisterPage(driver)
-        register_page.open()
-        register_page.register("Daniel", "Sokolik", Gender.FEMALE, "DanielS", "DanielS1$")
+    # def test_register(self, driver: WebDriver):
+    #     register_page = RegisterPage(driver)
+    #     register_page.open()
+    #     register_page.register("Daniel", "Sokolik", Gender.FEMALE, "DanielS2", "DanielS1$")
 
 
 
